@@ -17,7 +17,13 @@ st.title("🔋 LSTM Power Supply Forecast")
 st.markdown("Enter a date and time to predict the future power supply.")
 
 # --- User Input ---
-date_input = st.date_input("Select date:", value=datetime(2002, 4, 8).date())
+# Set default, min, and max dates
+DEFAULT_DATE = datetime(2018, 1, 1).date()  # Or any recent default
+MIN_DATE = datetime(2000, 1, 1).date()
+MAX_DATE = datetime(2030, 12, 31).date()
+
+# Updated date input with range
+date_input = st.date_input("Select date:", value=DEFAULT_DATE, min_value=MIN_DATE, max_value=MAX_DATE)
 time_input = st.time_input("Select time:", value=datetime(2002, 4, 8, 1, 0).time())
 input_datetime = datetime.combine(date_input, time_input)
 
